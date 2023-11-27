@@ -1,0 +1,195 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "definitions": {
+        "Label": {
+            "type": "object",
+            "properties": {
+                "Label": {
+                    "type": "string",
+                    "maxLength": 32
+                }
+            },
+            "required": [
+                "Label"
+            ]
+        },
+        "Icon": {
+            "type": "object",
+            "properties": {
+                "Icon": {
+                    "type": [
+                        "null",
+                        "string",
+                        "number"
+                    ],
+                    "maxLength": 32
+                }
+            },
+            "required": []
+        }
+    },
+    "properties": {
+        "UserInterfaces": {
+            "type": "object",
+            "properties": {
+                "UserInterface16": {
+                    "type": "object",
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/Label"
+                        },
+                        {
+                            "$ref": "#/definitions/Icon"
+                        }
+                    ],
+                    "properties": {
+                        "GlobalFunctionAvailabilityMask": {
+                            "type": "number",
+                            "minimum": 0,
+                            "maximum": 65535
+                        },
+                        "AreaGroupAvailabilityMask": {
+                            "type": "number",
+                            "minimum": 0,
+                            "maximum": 65535
+                        },
+                        "CameraAvailabilityMask": {
+                            "type": "number",
+                            "minimum": 0,
+                            "maximum": 65535
+                        },
+                        "DoorAvailabilityMask": {
+                            "type": "number",
+                            "minimum": 0,
+                            "maximum": 65535
+                        },
+                        "additionalProperties": true
+                    }
+                }
+            },
+            "patternProperties": {
+                "^UserInterface\\d\\d$": {
+                    "type": "object",
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/Label"
+                        },
+                        {
+                            "$ref": "#/definitions/Icon"
+                        }
+                    ],
+                    "properties": {
+                        "GlobalFunctionAvailabilityMask": {
+                            "type": "number",
+                            "minimum": 0,
+                            "maximum": 65535
+                        },
+                        "AreaGroupAvailabilityMask": {
+                            "type": "number",
+                            "minimum": 0,
+                            "maximum": 65535
+                        },
+                        "CameraAvailabilityMask": {
+                            "type": "number",
+                            "minimum": 0,
+                            "maximum": 65535
+                        },
+                        "DoorAvailabilityMask": {
+                            "type": "number",
+                            "minimum": 0,
+                            "maximum": 65535
+                        },
+                        "additionalProperties": true
+                    }
+                }
+            }
+        },
+        "GlobalFunctions": {
+            "type": "object",
+            "patternProperties": {
+                "^GlobalFunction\\d\\d$": {
+                    "type": "object",
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/Label"
+                        },
+                        {
+                            "$ref": "#/definitions/Icon"
+                        }
+                    ],
+                    "properties": {
+                        "additionalProperties": true
+                    }
+                },
+                "additionalProperties": false
+            }
+        },
+        "LocalFunctions": {
+            "type": "object",
+            "patternProperties": {
+                "^LocalFunction\\d\\d$": {
+                    "type": "object",
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/Label"
+                        },
+                        {
+                            "$ref": "#/definitions/Icon"
+                        }
+                    ],
+                    "properties": {
+                        "additionalProperties": true
+                    }
+                },
+                "additionalProperties": false
+            }
+        },
+        "AreaGroups": {
+            "type": "object",
+            "patternProperties": {
+                "^AreaGroup\\d\\d$": {
+                    "type": "object",
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/Label"
+                        },
+                        {
+                            "$ref": "#/definitions/Icon"
+                        }
+                    ],
+                    "properties": {
+                        "additionalProperties": true
+                    }
+                },
+                "additionalProperties": false
+            }
+        },
+        "Areas": {
+            "type": "object",
+            "patternProperties": {
+                "^Area\\d\\d$": {
+                    "type": "object",
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/Label"
+                        },
+                        {
+                            "$ref": "#/definitions/Icon"
+                        }
+                    ],
+                    "properties": {
+                        "AreaGroupMembershipMask": {
+                            "type": "number",
+                            "minimum": 0,
+                            "maximum": 65535
+                        },
+                        "additionalProperties": true
+                    }
+                },
+                "additionalProperties": false
+            }
+        },
+        "additionalProperties": true
+    }
+}
